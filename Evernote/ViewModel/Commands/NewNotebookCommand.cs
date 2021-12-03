@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EvernoteClone.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -18,12 +19,12 @@ namespace Evernote.ViewModel.Commands
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            NotesVM.CreateNotebook();
         }
     }
 }

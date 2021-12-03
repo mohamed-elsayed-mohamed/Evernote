@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EvernoteClone.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -9,7 +10,11 @@ namespace Evernote.ViewModel.Commands
     {
         public NotesVM NotesVM { get; set; }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public NewNoteCommand(NotesVM notesVM)
         {
@@ -18,12 +23,16 @@ namespace Evernote.ViewModel.Commands
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            Notebook selectedNotebook = parameter as Notebook;
+
+            return selectedNotebook != null;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            Notebook selectedNotebook = parameter as Notebook;
+
+            NotesVM.CreateNote(selectedNotebook.Id);
         }
     }
 }

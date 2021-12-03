@@ -21,5 +21,26 @@ namespace Evernote.View
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void contentRichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int numOfChars = new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd).Text.Length;
+            statusTextBlock.Text = $"Document Length: {numOfChars}";
+        }
+
+        private void boldButton_Click(object sender, RoutedEventArgs e)
+        {
+            contentRichTextBox.Selection.ApplyPropertyValue(Inline.FontWeightProperty, FontWeights.Bold);
+        }
     }
 }

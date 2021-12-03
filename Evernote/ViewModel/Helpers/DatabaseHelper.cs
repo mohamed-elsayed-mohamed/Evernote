@@ -5,9 +5,9 @@ using System.IO;
 
 namespace Evernote.ViewModel.Helpers
 {
-    class DatabaseHelper
+    public class DatabaseHelper
     {
-        private static string dbFile = Path.Combine(Environment.CurrentDirectory, "notesdb.db3");
+        private static string dbFile = Path.Combine(Environment.CurrentDirectory, "notesdb.db");
 
         public static bool Insert<T>(T item)
         {
